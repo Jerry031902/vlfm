@@ -186,3 +186,92 @@ habitat-lab/
 GroundingDINO/
 __pycache__/
 *.pyc
+
+# Data and model weights
+data/
+*.pth
+*.pt
+
+# Downloaded scripts
+download_mp.py
+download_mp.py.bak
+
+# Generated outputs
+outputs/
+tb/
+video_dir/
+
+# External repos
+yolov7/
+
+# Runtime files
+lockfiles/
+
+# Notes
+Instruction.md
+
+# Data and model weights
+data/
+*.pth
+*.pt
+
+# Downloaded scripts
+download_mp.py
+download_mp.py.bak
+
+# Generated outputs
+outputs/
+tb/
+video_dir/
+
+# External repos
+yolov7/
+
+# Runtime files
+lockfiles/
+
+# Notes
+Instruction.md
+
+# Data and model weights
+data/
+*.pth
+*.pt
+
+# Downloaded scripts
+download_mp.py
+download_mp.py.bak
+
+# Generated outputs
+outputs/
+tb/
+video_dir/
+
+# External repos
+yolov7/
+
+# Runtime files
+lockfiles/
+
+# Notes
+Instruction.md
+
+# Data and model weights
+data/
+*.pth
+*.pt
+
+# Downloaded scripts
+download_mp.py
+download_mp.py.bak
+
+# Generated outputs
+outputs/
+tb/
+video_dir/
+
+# External repos
+yolov7/
+
+# Runtime files
+lockfiles/
