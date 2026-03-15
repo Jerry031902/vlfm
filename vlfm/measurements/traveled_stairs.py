@@ -1,4 +1,4 @@
-# Copyright (c) 2024. All rights reserved.
+# Copyright (c) 2023 Boston Dynamics AI Institute LLC. All rights reserved.
 
 from dataclasses import dataclass
 from typing import Any, List
@@ -15,47 +15,39 @@ from omegaconf import DictConfig
 
 
 @registry.register_measure
-class RegionCoverage(Measure):
-    """Measures how much of a target region the agent has explored.
+class TraveledStairs(Measure):
+    cls_uuid: str = "traveled_stairs"
 
-    Need to replace update_metric() logic with real coverage computation later.
-    """
-
-    cls_uuid: str = "region_coverage"
-
-    def __init__(
-        self, sim: Simulator, config: DictConfig, *args: Any, **kwargs: Any
-    ) -> None:
+    def __init__(self, sim: Simulator, config: DictConfig, *args: Any, **kwargs: Any) -> None:
         self._sim = sim
         self._config = config
-        # TODO: need load ground-truth region boundaries from MP3D .house file
+        self._history: List[np.ndarray] = []
         super().__init__(*args, **kwargs)
 
     @staticmethod
     def _get_uuid(*args: Any, **kwargs: Any) -> str:
-        return RegionCoverage.cls_uuid
+        return TraveledStairs.cls_uuid
 
     def reset_metric(self, *args: Any, **kwargs: Any) -> None:
-        # TODO: reset coverage grid for new episode
-        self._step_count = 0
+        self._history = []
         self.update_metric()
 
     def update_metric(self, *args: Any, **kwargs: Any) -> None:
-        # DUMMY: just count steps for now to confirm Habitat is calling this
-        self._step_count += 1
-        # TODO: replace with real coverage fraction (0.0 to 1.0)
-        self._metric = self._step_count
+        curr_z = self._sim.get_agent_state().position[1]
+        self._history.append(curr_z)
+        # Make self._metric True (1) if peak-to-peak distance is greater than 0.9m
+        self._metric = int(np.ptp(self._history) > 0.9)
 
 
 @dataclass
-class RegionCoverageMeasurementConfig(MeasurementConfig):
-    type: str = RegionCoverage.__name__
+class TraveledStairsMeasurementConfig(MeasurementConfig):
+    type: str = TraveledStairs.__name__
 
 
 cs = ConfigStore.instance()
 cs.store(
-    package="habitat.task.measurements.region_coverage",
+    package="habitat.task.measurements.traveled_stairs",
     group="habitat/task/measurements",
-    name="region_coverage",
-    node=RegionCoverageMeasurementConfig,
+    name="traveled_stairs",
+    node=TraveledStairsMeasurementConfig,
 )
