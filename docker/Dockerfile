@@ -1,18 +1,23 @@
 # VLFM Docker Environment - Updated with all fixes
 # Original: Boston Dynamics AI Institute LLC, 2023
-# Modified: Feb 2026 - CMU CERLAB
+# Modified: Mar 2026 
 
 FROM ubuntu:22.04
 
 ENV DEBIAN_FRONTEND=noninteractive
 
 # ============================================================
-# Step 1: System dependencies + tmux (needed for VLM servers)
+# Step 1: System dependencies
+#   - tmux: needed for VLM servers (launch_vlm_servers.sh)
+#   - ffmpeg: needed for video generation (Habitat episode videos)
+#   - unzip: needed for extracting dataset zips (ObjectNav, MP3D)
+#   - wget: needed for downloading model weights and datasets
+#   - openssh-client: needed for scp between lab machines
 # ============================================================
 RUN apt-get update \
       && apt-get install --no-install-recommends -qy curl apt-transport-https gnupg \
       sudo ca-certificates git software-properties-common \
-      build-essential tmux \
+      build-essential tmux ffmpeg unzip wget openssh-client \
       libgl1-mesa-dev libjpeg-dev libglm-dev libgl1-mesa-glx \
       libegl1-mesa-dev mesa-utils xorg-dev freeglut3-dev \
       && rm -rf /var/lib/apt/lists/* \
@@ -31,7 +36,7 @@ ENV PATH=/opt/conda/bin:$PATH
 # Step 3: Create conda env + install habitat-sim via conda
 #   - Must accept conda TOS first (non-interactive mode)
 #   - habitat-sim cannot be built from source (CMake/corrade bug)
-#   - "headless" = no display needed 
+#   - "headless" = no display needed
 # ============================================================
 RUN conda tos accept --override-channels --channel https://repo.anaconda.com/pkgs/main \
       && conda tos accept --override-channels --channel https://repo.anaconda.com/pkgs/r \
@@ -55,8 +60,8 @@ RUN pip install numpy==1.26.4
 
 # ============================================================
 # Step 5: Install remaining Python packages
-#   - Do NOT include torch/torchvision here (already installed above)
-#   - opencv-python version left flexible (4.5.5.64 is fine too)
+#   - Do NOT include torch/torchvision here 
+#   - opencv-python version left flexible 
 # ============================================================
 RUN pip install \
     flask>=2.3.2 \
@@ -76,7 +81,7 @@ RUN pip install \
 
 # ============================================================
 # Step 6: Install git dependencies
-#   - habitat-sim already installed via conda, do NOT include it
+#   - habitat-sim already installed via conda
 #   - GroundingDINO must use --no-build-isolation (setup.py imports torch)
 # ============================================================
 RUN pip install git+https://github.com/naokiyokoyama/frontier_exploration.git \
@@ -95,7 +100,58 @@ RUN pip install torch==2.0.1+cu118 torchvision==0.15.2+cu118 \
       --index-url https://download.pytorch.org/whl/cu118 \
     && pip install numpy==1.26.4
 
-RUN apt-get update && apt-get install -y wget
+# ============================================================
+# Step 8: ffmpeg fix for video generation
+#   - imageio-ffmpeg can't find system ffmpeg without this env var
+#   - The parser in imageio-ffmpeg crashes when ffmpeg output lacks
+#     "------" separator. Patch line 97 of _io.py to handle this.
+#   - Without both fixes, Habitat episode video generation fails.
+# ============================================================
+ENV IMAGEIO_FFMPEG_EXE=/usr/bin/ffmpeg
+
+RUN python -c "\
+path = '/opt/conda/envs/vlfm/lib/python3.9/site-packages/imageio_ffmpeg/_io.py'; \
+f = open(path); code = f.read(); f.close(); \
+old = '    footer = header_footer[1].strip(\"\\n\")'; \
+new = '    footer = header_footer[1].strip(\"\\n\") if len(header_footer) > 1 else stdout.strip(\"\\n\")'; \
+code = code.replace(old, new); \
+f = open(path, 'w'); f.write(code); f.close(); \
+print('imageio-ffmpeg parser patched successfully')"
+
+# ============================================================
+# Step 9: Make VLFM importable without pip install -e
+#   - The VLFM source code is volume-mounted at /workspace/vlfm
+#     at runtime -> can't pip install it at build time.
+#   - PYTHONPATH tells Python to also look in /workspace/vlfm
+#     when resolving imports like "from vlfm.policy import PointNavPolicy"
+# ============================================================
+ENV PYTHONPATH=/workspace/vlfm:$PYTHONPATH
 
 # Set working directory
 WORKDIR /workspace/vlfm
+
+# ============================================================
+# Step 10: Entrypoint script for runtime setup
+#   - Runs automatically every time the container starts
+#   - Copies GroundingDINO config to the path the launch script
+#     expects. This can't be done at build time because the volume
+#     mount at runtime overlays /workspace/vlfm/ and hides any
+#     files created there during build
+#   - Generates dummy PointNav policy weights if not present.
+#   - Only runs these if the files don't already exist (first run)
+# ============================================================
+RUN printf '#!/bin/bash\n\
+GDINO_DST=/workspace/vlfm/GroundingDINO/groundingdino/config/GroundingDINO_SwinT_OGC.py\n\
+GDINO_SRC=/opt/conda/envs/vlfm/lib/python3.9/site-packages/groundingdino/config/GroundingDINO_SwinT_OGC.py\n\
+if [ ! -f "$GDINO_DST" ] && [ -f "$GDINO_SRC" ]; then\n\
+    mkdir -p "$(dirname "$GDINO_DST")"\n\
+    cp "$GDINO_SRC" "$GDINO_DST"\n\
+    echo "GroundingDINO config copied to $GDINO_DST"\n\
+fi\n\
+if [ ! -f "/workspace/vlfm/data/dummy_policy.pth" ]; then\n\
+    cd /workspace/vlfm && python -m vlfm.utils.generate_dummy_policy 2>/dev/null || true\n\
+fi\n\
+exec "$@"\n' > /entrypoint.sh && chmod +x /entrypoint.sh
+
+ENTRYPOINT ["/entrypoint.sh"]
+CMD ["bash"]
