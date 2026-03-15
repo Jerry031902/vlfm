@@ -82,7 +82,7 @@ RUN pip install \
 # ============================================================
 # Step 6: Install git dependencies
 #   - habitat-sim already installed via conda
-#   - GroundingDINO must use --no-build-isolation (setup.py imports torch)
+#   - GroundingDINO must use --no-build-isolation
 # ============================================================
 RUN pip install git+https://github.com/naokiyokoyama/frontier_exploration.git \
                 git+https://github.com/ChaoningZhang/MobileSAM.git \
@@ -123,7 +123,7 @@ print('imageio-ffmpeg parser patched successfully')"
 #   - The VLFM source code is volume-mounted at /workspace/vlfm
 #     at runtime -> can't pip install it at build time.
 #   - PYTHONPATH tells Python to also look in /workspace/vlfm
-#     when resolving imports like "from vlfm.policy import PointNavPolicy"
+#     when resolving vlfm imports
 # ============================================================
 ENV PYTHONPATH=/workspace/vlfm:$PYTHONPATH
 
@@ -134,11 +134,9 @@ WORKDIR /workspace/vlfm
 # Step 10: Entrypoint script for runtime setup
 #   - Runs automatically every time the container starts
 #   - Copies GroundingDINO config to the path the launch script
-#     expects. This can't be done at build time because the volume
-#     mount at runtime overlays /workspace/vlfm/ and hides any
-#     files created there during build
-#   - Generates dummy PointNav policy weights if not present.
-#   - Only runs these if the files don't already exist (first run)
+#     expects
+#   - Generates dummy PointNav policy weights if not present
+#   - Only runs these if the files don't already exist
 # ============================================================
 RUN printf '#!/bin/bash\n\
 GDINO_DST=/workspace/vlfm/GroundingDINO/groundingdino/config/GroundingDINO_SwinT_OGC.py\n\
