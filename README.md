@@ -35,33 +35,93 @@ Understanding how humans leverage semantic knowledge to navigate unfamiliar envi
 
 ## :hammer_and_wrench: Installation
 
-### Getting Started
-Create the conda environment:
+### Simulation (Docker)
+
+The simulation environment is fully containerized via Docker. This handles all dependency conflicts (habitat-sim, torch, GroundingDINO, etc.) automatically.
+
+#### Prerequisites
+
+- Docker installed (`docker --version`)
+- NVIDIA GPU with drivers installed (`nvidia-smi`)
+- [nvidia-container-toolkit](https://docs.nvidia.com/datacenter/cloud-native/container-toolkit/install-guide.html) installed so Docker can access GPUs
+
+Verify GPU access inside Docker:
+```bash
+docker run --rm --gpus all nvidia/cuda:11.8.0-base-ubuntu22.04 nvidia-smi
+```
+
+If this fails, install nvidia-container-toolkit:
+```bash
+sudo apt-get install -y nvidia-container-toolkit
+sudo systemctl restart docker
+```
+
+#### 1. Clone the repo
+
+```bash
+cd ~
+git clone https://github.com/Jerry031902/vlfm.git
+cd vlfm
+```
+
+#### 2. Build the Docker image
+
+```bash
+docker build -t vlfm -f docker/Dockerfile .
+```
+
+This takes ~15–20 minutes.
+
+#### 3. Run the container
+
+```bash
+docker run -it --gpus all \
+  -v ~/vlfm:/workspace/vlfm \
+  --name vlfm_container \
+  vlfm bash
+```
+
+**What this does:**
+- `--gpus all` — gives the container GPU access
+- `-v ~/vlfm:/workspace/vlfm` — mounts your local repo into the container (same files, not a copy — edits on either side are instantly visible)
+- `--name vlfm_container` — names the container for easy reference
+
+**After exiting**, you can re-enter the container with:
+```bash
+docker start vlfm_container
+docker exec -it vlfm_container bash
+```
+
+> **Note:** Do your `git` operations (add, commit, push) from the **host machine**, not inside the container. The container runs as root, so git commands inside it will change file ownership and cause permission errors on the host. 
+
+#### 4. Clone YOLOv7 (inside the container or on host)
+
+```bash
+git clone https://github.com/WongKinYiu/yolov7.git
+```
+
+### Reality (Spot Robot)
+
+For deploying on the Boston Dynamics Spot platform, install directly into a conda environment (no Docker needed):
 ```bash
 conda_env_name=vlfm
 conda create -n $conda_env_name python=3.9 -y
 conda activate $conda_env_name
 pip install torch==1.12.1+cu113 torchvision==0.13.1+cu113 -f https://download.pytorch.org/whl/torch_stable.html
 pip install git+https://github.com/IDEA-Research/GroundingDINO.git@eeba084341aaa454ce13cb32fa7fd9282fc73a67 salesforce-lavis==1.0.2
-```
-If you are using habitat and are doing simulation experiments, install this repo into your env with the following:
-```bash
-pip install -e .[habitat]
-```
-If you are using the Spot robot, install this repo into your env with the following:
-```bash
 pip install -e .[reality]
 ```
-#### [Whether you're using conda or not]
-Clone the following repo within this one (simply cloning will suffice):
+
+Clone YOLOv7 within this repo:
 ```bash
-git clone git@github.com:WongKinYiu/yolov7.git
+git clone https://github.com/WongKinYiu/yolov7.git
 ```
 
-## :dart: Downloading the HM3D dataset
+## :dart: Downloading Datasets
 
-### Matterport
-First, set the following variables during installation (don't need to put in .bashrc):
+### HM3D
+
+First, set the following variables (don't need to put in .bashrc):
 ```bash
 MATTERPORT_TOKEN_ID=<FILL IN FROM YOUR ACCOUNT INFO IN MATTERPORT>
 MATTERPORT_TOKEN_SECRET=<FILL IN FROM YOUR ACCOUNT INFO IN MATTERPORT>
@@ -74,8 +134,7 @@ DATA_DIR=</path/to/vlfm/data>
 HM3D_OBJECTNAV=https://dl.fbaipublicfiles.com/habitat/data/datasets/objectnav/hm3d/v1/objectnav_hm3d_v1.zip
 ```
 
-### Clone and install habitat-lab, then download datasets
-*Ensure that the correct conda environment is activated!!*
+Download the scenes and episodes:
 ```bash
 # Download HM3D 3D scans (scenes_dataset)
 python -m habitat_sim.utils.datasets_download \
@@ -95,14 +154,21 @@ mv objectnav_hm3d_v1 $DATA_DIR/datasets/objectnav/hm3d/v1 &&
 rm objectnav_hm3d_v1.zip
 ```
 
+### MP3D
+
+MP3D scene datasets and `.house` ground-truth files can be obtained from the [Matterport3D project page](https://niessner.github.io/Matterport/). Place scene data under `data/scene_datasets/mp3d/`.
+
 ## :weight_lifting: Downloading weights for various models
-The weights for MobileSAM, GroundingDINO, and PointNav must be saved to the `data/` directory. The weights can be downloaded from the following links:
+The weights for MobileSAM, GroundingDINO, YOLOv7, and PointNav must be saved to the `data/` directory. The weights can be downloaded from the following links:
 - `mobile_sam.pt`:  https://github.com/ChaoningZhang/MobileSAM
 - `groundingdino_swint_ogc.pth`: https://github.com/IDEA-Research/GroundingDINO
 - `yolov7-e6e.pt`: https://github.com/WongKinYiu/yolov7
 - `pointnav_weights.pth`: included inside the [data](data) subdirectory
 
+> **Docker note:** Since the `data/` directory is inside the mounted repo (`~/vlfm/data`), weights downloaded on the host are automatically available inside the container.
+
 ## :arrow_forward: Evaluation within Habitat
+
 To run evaluation, various models must be loaded in the background first. This only needs to be done once by running the following command:
 ```bash
 ./scripts/launch_vlm_servers.sh
