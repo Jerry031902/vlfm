@@ -5,6 +5,9 @@
     <a href="http://naoki.io/">Naoki Yokoyama</a>, <a href="https://faculty.cc.gatech.edu/~sha9/">Sehoon Ha</a>, <a href="https://faculty.cc.gatech.edu/~dbatra/">Dhruv Batra</a>, <a href="https://www.robo.guru/about.html">Jiuguang Wang</a>, <a href="https://bucherb.github.io">Bernadette Bucher</a>
   </h3>
   <p align="center">
+    <em>Docker environment & documentation updated by Jiaming Huang (CMU CERLAB, 2026)</em>
+  </p>
+  <p align="center">
     <a href="http://naoki.io/portfolio/vlfm.html">Project Website</a> , <a href="https://arxiv.org/abs/2312.03275">Paper (arXiv)</a>
   </p>
   <p align="center">
