@@ -41,7 +41,7 @@ class RegionCoverage(Measure):
         self.update_metric()
 
     def update_metric(self, *args: Any, **kwargs: Any) -> None:
-        # DUMMY: just count steps for now to confirm Habitat is calling this
+        # just count steps for now to confirm Habitat is calling this
         self._step_count += 1
         # TODO: replace with real coverage fraction (0.0 to 1.0)
         self._metric = self._step_count
