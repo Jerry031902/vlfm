@@ -14,6 +14,7 @@ defaults:
   - /habitat/task/measurements:
     - frontier_exploration_map
     - traveled_stairs
+    - region_coverage
   - /habitat_baselines/rl/policy: vlfm_policy
   - _self_
 
