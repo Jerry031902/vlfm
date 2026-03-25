@@ -12,7 +12,7 @@ from habitat.core.embodied_task import Measure
 from habitat.core.simulator import Simulator
 from hydra.core.config_store import ConfigStore
 from omegaconf import DictConfig
-
+import habitat_sim
 
 @registry.register_measure
 class RegionCoverage(Measure):
@@ -36,7 +36,10 @@ class RegionCoverage(Measure):
         return RegionCoverage.cls_uuid
 
     def reset_metric(self, *args: Any, **kwargs: Any) -> None:
-        # TODO: reset coverage grid for new episode
+        cfg = habitat_sim.SimulatorConfiguration()
+        cfg.scene_id = "/workspace/vlfm/data/scene_datasets/mp3d/mp3d/1LXtFkjw3qL/1LXtFkjw3qL.glb"
+        agent_cfg = habitat_sim.AgentConfiguration()
+        sim = habitat_sim.Simulator(habitat_sim.Configuration(cfg, [agent_cfg]))
         self._step_count = 0
         self.update_metric()
 
