@@ -1,0 +1,832 @@
+{
+  "goals_by_category": {
+    "1LXtFkjw3qL.glb_tv_monitor": [
+      {
+        "position": [
+          -3.0461699962615967,
+          4.44736909866333,
+          5.29811954498291
+        ],
+        "radius": null,
+        "object_id": 6,
+        "object_name": "tv_monitor_6",
+        "object_name_id": null,
+        "object_category": "tv_monitor",
+        "room_id": null,
+        "room_name": null,
+        "view_points": []
+      },
+      {
+        "position": [
+          -0.5864589810371399,
+          6.075888633728027,
+          10.046499252319336
+        ],
+        "radius": null,
+        "object_id": 35,
+        "object_name": "tv_monitor_35",
+        "object_name_id": null,
+        "object_category": "tv_monitor",
+        "room_id": null,
+        "room_name": null,
+        "view_points": []
+      },
+      {
+        "position": [
+          -0.7073559761047363,
+          1.0480403900146484,
+          14.693300247192383
+        ],
+        "radius": null,
+        "object_id": 224,
+        "object_name": "tv_monitor_224",
+        "object_name_id": null,
+        "object_category": "tv_monitor",
+        "room_id": null,
+        "room_name": null,
+        "view_points": []
+      },
+      {
+        "position": [
+          -0.7672439813613892,
+          1.1050891876220703,
+          14.21769905090332
+        ],
+        "radius": null,
+        "object_id": 234,
+        "object_name": "tv_monitor_234",
+        "object_name_id": null,
+        "object_category": "tv_monitor",
+        "room_id": null,
+        "room_name": null,
+        "view_points": []
+      },
+      {
+        "position": [
+          -4.043610095977783,
+          -2.1835403442382812,
+          17.087499618530273
+        ],
+        "radius": null,
+        "object_id": 342,
+        "object_name": "tv_monitor_342",
+        "object_name_id": null,
+        "object_category": "tv_monitor",
+        "room_id": null,
+        "room_name": null,
+        "view_points": []
+      },
+      {
+        "position": [
+          -6.897930145263672,
+          -2.2008094787597656,
+          10.859800338745117
+        ],
+        "radius": null,
+        "object_id": 368,
+        "object_name": "tv_monitor_368",
+        "object_name_id": null,
+        "object_category": "tv_monitor",
+        "room_id": null,
+        "room_name": null,
+        "view_points": []
+      },
+      {
+        "position": [
+          -3.66621994972229,
+          -1.0576698780059814,
+          -1.1955101490020752
+        ],
+        "radius": null,
+        "object_id": 515,
+        "object_name": "tv_monitor_515",
+        "object_name_id": null,
+        "object_category": "tv_monitor",
+        "room_id": null,
+        "room_name": null,
+        "view_points": []
+      }
+    ],
+    "1LXtFkjw3qL.glb_bed": [
+      {
+        "position": [
+          -0.6416770219802856,
+          3.689589500427246,
+          7.830119609832764
+        ],
+        "radius": null,
+        "object_id": 7,
+        "object_name": "bed_7",
+        "object_name_id": null,
+        "object_category": "bed",
+        "room_id": null,
+        "room_name": null,
+        "view_points": []
+      },
+      {
+        "position": [
+          -0.49321502447128296,
+          3.9617490768432617,
+          13.427398681640625
+        ],
+        "radius": null,
+        "object_id": 33,
+        "object_name": "bed_33",
+        "object_name_id": null,
+        "object_category": "bed",
+        "room_id": null,
+        "room_name": null,
+        "view_points": []
+      },
+      {
+        "position": [
+          -0.5160530805587769,
+          3.9730091094970703,
+          12.213997840881348
+        ],
+        "radius": null,
+        "object_id": 34,
+        "object_name": "bed_34",
+        "object_name_id": null,
+        "object_category": "bed",
+        "room_id": null,
+        "room_name": null,
+        "view_points": []
+      },
+      {
+        "position": [
+          -2.073199987411499,
+          -2.6249523162841797,
+          16.449298858642578
+        ],
+        "radius": null,
+        "object_id": 337,
+        "object_name": "bed_337",
+        "object_name_id": null,
+        "object_category": "bed",
+        "room_id": null,
+        "room_name": null,
+        "view_points": []
+      },
+      {
+        "position": [
+          -3.190190076828003,
+          -2.7760210037231445,
+          13.686598777770996
+        ],
+        "radius": null,
+        "object_id": 357,
+        "object_name": "bed_357",
+        "object_name_id": null,
+        "object_category": "bed",
+        "room_id": null,
+        "room_name": null,
+        "view_points": []
+      },
+      {
+        "position": [
+          -6.606969833374023,
+          -2.7371397018432617,
+          9.09352970123291
+        ],
+        "radius": null,
+        "object_id": 363,
+        "object_name": "bed_363",
+        "object_name_id": null,
+        "object_category": "bed",
+        "room_id": null,
+        "room_name": null,
+        "view_points": []
+      },
+      {
+        "position": [
+          -4.937699794769287,
+          -2.667670249938965,
+          10.654800415039062
+        ],
+        "radius": null,
+        "object_id": 372,
+        "object_name": "bed_372",
+        "object_name_id": null,
+        "object_category": "bed",
+        "room_id": null,
+        "room_name": null,
+        "view_points": []
+      },
+      {
+        "position": [
+          -4.920269966125488,
+          -2.6243300437927246,
+          7.74006986618042
+        ],
+        "radius": null,
+        "object_id": 380,
+        "object_name": "bed_380",
+        "object_name_id": null,
+        "object_category": "bed",
+        "room_id": null,
+        "room_name": null,
+        "view_points": []
+      },
+      {
+        "position": [
+          -4.074689865112305,
+          -2.162529468536377,
+          -1.9494702816009521
+        ],
+        "radius": null,
+        "object_id": 538,
+        "object_name": "bed_538",
+        "object_name_id": null,
+        "object_category": "bed",
+        "room_id": null,
+        "room_name": null,
+        "view_points": []
+      }
+    ],
+    "1LXtFkjw3qL.glb_toilet": [
+      {
+        "position": [
+          -0.06353240460157394,
+          3.7545394897460938,
+          15.640800476074219
+        ],
+        "radius": null,
+        "object_id": 60,
+        "object_name": "toilet_60",
+        "object_name_id": null,
+        "object_category": "toilet",
+        "room_id": null,
+        "room_name": null,
+        "view_points": []
+      },
+      {
+        "position": [
+          1.3478800058364868,
+          -2.7997703552246094,
+          5.886859893798828
+        ],
+        "radius": null,
+        "object_id": 417,
+        "object_name": "toilet_417",
+        "object_name_id": null,
+        "object_category": "toilet",
+        "room_id": null,
+        "room_name": null,
+        "view_points": []
+      }
+    ],
+    "1LXtFkjw3qL.glb_chair": [
+      {
+        "position": [
+          -5.290979862213135,
+          0.6254434585571289,
+          9.628870010375977
+        ],
+        "radius": null,
+        "object_id": 94,
+        "object_name": "chair_94",
+        "object_name_id": null,
+        "object_category": "chair",
+        "room_id": null,
+        "room_name": null,
+        "view_points": []
+      },
+      {
+        "position": [
+          -5.798799991607666,
+          0.585902214050293,
+          9.68667984008789
+        ],
+        "radius": null,
+        "object_id": 100,
+        "object_name": "chair_100",
+        "object_name_id": null,
+        "object_category": "chair",
+        "room_id": null,
+        "room_name": null,
+        "view_points": []
+      },
+      {
+        "position": [
+          -5.782279968261719,
+          0.6411142349243164,
+          10.178099632263184
+        ],
+        "radius": null,
+        "object_id": 101,
+        "object_name": "chair_101",
+        "object_name_id": null,
+        "object_category": "chair",
+        "room_id": null,
+        "room_name": null,
+        "view_points": []
+      },
+      {
+        "position": [
+          -6.346519947052002,
+          0.41901683807373047,
+          16.2185001373291
+        ],
+        "radius": null,
+        "object_id": 102,
+        "object_name": "chair_102",
+        "object_name_id": null,
+        "object_category": "chair",
+        "room_id": null,
+        "room_name": null,
+        "view_points": []
+      },
+      {
+        "position": [
+          -5.289279937744141,
+          0.6524600982666016,
+          10.212800025939941
+        ],
+        "radius": null,
+        "object_id": 113,
+        "object_name": "chair_113",
+        "object_name_id": null,
+        "object_category": "chair",
+        "room_id": null,
+        "room_name": null,
+        "view_points": []
+      },
+      {
+        "position": [
+          -5.293489933013916,
+          0.4283266067504883,
+          16.226900100708008
+        ],
+        "radius": null,
+        "object_id": 115,
+        "object_name": "chair_115",
+        "object_name_id": null,
+        "object_category": "chair",
+        "room_id": null,
+        "room_name": null,
+        "view_points": []
+      },
+      {
+        "position": [
+          -1.8003000020980835,
+          1.056169867515564,
+          0.30872011184692383
+        ],
+        "radius": null,
+        "object_id": 119,
+        "object_name": "chair_119",
+        "object_name_id": null,
+        "object_category": "chair",
+        "room_id": null,
+        "room_name": null,
+        "view_points": []
+      },
+      {
+        "position": [
+          -2.301379919052124,
+          1.0533299446105957,
+          0.46269798278808594
+        ],
+        "radius": null,
+        "object_id": 124,
+        "object_name": "chair_124",
+        "object_name_id": null,
+        "object_category": "chair",
+        "room_id": null,
+        "room_name": null,
+        "view_points": []
+      },
+      {
+        "position": [
+          -4.372089862823486,
+          1.0509703159332275,
+          -2.7141497135162354
+        ],
+        "radius": null,
+        "object_id": 127,
+        "object_name": "chair_127",
+        "object_name_id": null,
+        "object_category": "chair",
+        "room_id": null,
+        "room_name": null,
+        "view_points": []
+      },
+      {
+        "position": [
+          -1.6646100282669067,
+          1.050479769706726,
+          2.1861701011657715
+        ],
+        "radius": null,
+        "object_id": 133,
+        "object_name": "chair_133",
+        "object_name_id": null,
+        "object_category": "chair",
+        "room_id": null,
+        "room_name": null,
+        "view_points": []
+      },
+      {
+        "position": [
+          -2.3639700412750244,
+          1.062309980392456,
+          1.235339879989624
+        ],
+        "radius": null,
+        "object_id": 146,
+        "object_name": "chair_146",
+        "object_name_id": null,
+        "object_category": "chair",
+        "room_id": null,
+        "room_name": null,
+        "view_points": []
+      },
+      {
+        "position": [
+          -1.6951899528503418,
+          1.0588198900222778,
+          1.2502402067184448
+        ],
+        "radius": null,
+        "object_id": 147,
+        "object_name": "chair_147",
+        "object_name_id": null,
+        "object_category": "chair",
+        "room_id": null,
+        "room_name": null,
+        "view_points": []
+      },
+      {
+        "position": [
+          -2.5575499534606934,
+          1.0684599876403809,
+          2.1388399600982666
+        ],
+        "radius": null,
+        "object_id": 148,
+        "object_name": "chair_148",
+        "object_name_id": null,
+        "object_category": "chair",
+        "room_id": null,
+        "room_name": null,
+        "view_points": []
+      },
+      {
+        "position": [
+          -0.674360990524292,
+          0.5502309799194336,
+          15.514398574829102
+        ],
+        "radius": null,
+        "object_id": 214,
+        "object_name": "chair_214",
+        "object_name_id": null,
+        "object_category": "chair",
+        "room_id": null,
+        "room_name": null,
+        "view_points": []
+      },
+      {
+        "position": [
+          -2.4781599044799805,
+          0.3950362205505371,
+          7.6013898849487305
+        ],
+        "radius": null,
+        "object_id": 233,
+        "object_name": "chair_233",
+        "object_name_id": null,
+        "object_category": "chair",
+        "room_id": null,
+        "room_name": null,
+        "view_points": []
+      },
+      {
+        "position": [
+          0.24374501407146454,
+          0.3771805763244629,
+          7.600099563598633
+        ],
+        "radius": null,
+        "object_id": 239,
+        "object_name": "chair_239",
+        "object_name_id": null,
+        "object_category": "chair",
+        "room_id": null,
+        "room_name": null,
+        "view_points": []
+      },
+      {
+        "position": [
+          -3.5092899799346924,
+          -2.644458770751953,
+          14.729000091552734
+        ],
+        "radius": null,
+        "object_id": 333,
+        "object_name": "chair_333",
+        "object_name_id": null,
+        "object_category": "chair",
+        "room_id": null,
+        "room_name": null,
+        "view_points": []
+      },
+      {
+        "position": [
+          -6.327330112457275,
+          -2.567340850830078,
+          12.55579948425293
+        ],
+        "radius": null,
+        "object_id": 350,
+        "object_name": "chair_350",
+        "object_name_id": null,
+        "object_category": "chair",
+        "room_id": null,
+        "room_name": null,
+        "view_points": []
+      },
+      {
+        "position": [
+          -6.435850143432617,
+          -2.5990400314331055,
+          13.533799171447754
+        ],
+        "radius": null,
+        "object_id": 355,
+        "object_name": "chair_355",
+        "object_name_id": null,
+        "object_category": "chair",
+        "room_id": null,
+        "room_name": null,
+        "view_points": []
+      },
+      {
+        "position": [
+          -6.511499881744385,
+          -2.625720500946045,
+          6.034829616546631
+        ],
+        "radius": null,
+        "object_id": 389,
+        "object_name": "chair_389",
+        "object_name_id": null,
+        "object_category": "chair",
+        "room_id": null,
+        "room_name": null,
+        "view_points": []
+      },
+      {
+        "position": [
+          -2.0144898891448975,
+          -2.6734704971313477,
+          6.734620094299316
+        ],
+        "radius": null,
+        "object_id": 391,
+        "object_name": "chair_391",
+        "object_name_id": null,
+        "object_category": "chair",
+        "room_id": null,
+        "room_name": null,
+        "view_points": []
+      },
+      {
+        "position": [
+          -1.5715299844741821,
+          -2.6582107543945312,
+          7.610409736633301
+        ],
+        "radius": null,
+        "object_id": 410,
+        "object_name": "chair_410",
+        "object_name_id": null,
+        "object_category": "chair",
+        "room_id": null,
+        "room_name": null,
+        "view_points": []
+      },
+      {
+        "position": [
+          -1.6189600229263306,
+          -2.660950183868408,
+          6.749519348144531
+        ],
+        "radius": null,
+        "object_id": 411,
+        "object_name": "chair_411",
+        "object_name_id": null,
+        "object_category": "chair",
+        "room_id": null,
+        "room_name": null,
+        "view_points": []
+      }
+    ],
+    "1LXtFkjw3qL.glb_plant": [
+      {
+        "position": [
+          -4.871079921722412,
+          1.1594300270080566,
+          -1.2901899814605713
+        ],
+        "radius": null,
+        "object_id": 118,
+        "object_name": "plant_118",
+        "object_name_id": null,
+        "object_category": "plant",
+        "room_id": null,
+        "room_name": null,
+        "view_points": []
+      },
+      {
+        "position": [
+          0.3611310124397278,
+          1.9429998397827148,
+          -1.6293997764587402
+        ],
+        "radius": null,
+        "object_id": 151,
+        "object_name": "plant_151",
+        "object_name_id": null,
+        "object_category": "plant",
+        "room_id": null,
+        "room_name": null,
+        "view_points": []
+      },
+      {
+        "position": [
+          1.775089979171753,
+          1.1242303848266602,
+          16.117399215698242
+        ],
+        "radius": null,
+        "object_id": 208,
+        "object_name": "plant_208",
+        "object_name_id": null,
+        "object_category": "plant",
+        "room_id": null,
+        "room_name": null,
+        "view_points": []
+      },
+      {
+        "position": [
+          1.6712400913238525,
+          0.3862171173095703,
+          9.072400093078613
+        ],
+        "radius": null,
+        "object_id": 245,
+        "object_name": "plant_245",
+        "object_name_id": null,
+        "object_category": "plant",
+        "room_id": null,
+        "room_name": null,
+        "view_points": []
+      },
+      {
+        "position": [
+          2.304260015487671,
+          0.38512325286865234,
+          8.998129844665527
+        ],
+        "radius": null,
+        "object_id": 275,
+        "object_name": "plant_275",
+        "object_name_id": null,
+        "object_category": "plant",
+        "room_id": null,
+        "room_name": null,
+        "view_points": []
+      }
+    ],
+    "1LXtFkjw3qL.glb_sofa": [
+      {
+        "position": [
+          -0.9139389991760254,
+          0.40701961517333984,
+          11.383499145507812
+        ],
+        "radius": null,
+        "object_id": 231,
+        "object_name": "sofa_231",
+        "object_name_id": null,
+        "object_category": "sofa",
+        "room_id": null,
+        "room_name": null,
+        "view_points": []
+      },
+      {
+        "position": [
+          -3.916059970855713,
+          -2.0590598583221436,
+          -0.9865412712097168
+        ],
+        "radius": null,
+        "object_id": 529,
+        "object_name": "sofa_529",
+        "object_name_id": null,
+        "object_category": "sofa",
+        "room_id": null,
+        "room_name": null,
+        "view_points": []
+      }
+    ]
+  },
+  "episodes": [
+    {
+      "episode_id": "0",
+      "scene_id": "mp3d/mp3d/1LXtFkjw3qL/1LXtFkjw3qL.glb",
+      "scene_dataset_config": "",
+      "additional_obj_config_paths": [],
+      "start_position": [
+        -0.9018758535385132,
+        -2.9155871868133545,
+        4.918056488037109
+      ],
+      "start_rotation": [
+        0.0,
+        0.9055923137516669,
+        0.0,
+        -0.42414922052728377
+      ],
+      "info": {
+        "geodesic_distance": 10.14325,
+        "euclidean_distance": 8.47159,
+        "closest_goal_object_id": 368
+      },
+      "goals": [],
+      "start_room": null,
+      "shortest_paths": null,
+      "object_category": "tv_monitor"
+    },
+    {
+      "episode_id": "1",
+      "scene_id": "mp3d/mp3d/1LXtFkjw3qL/1LXtFkjw3qL.glb",
+      "scene_dataset_config": "",
+      "additional_obj_config_paths": [],
+      "start_position": [
+        2.1932265758514404,
+        0.08441281318664551,
+        4.268524169921875
+      ],
+      "start_rotation": [
+        0.0,
+        0.07849278005281264,
+        0.0,
+        0.9969146821466623
+      ],
+      "info": {
+        "geodesic_distance": 15.61645,
+        "euclidean_distance": 5.8068,
+        "closest_goal_object_id": 7
+      },
+      "goals": [],
+      "start_room": null,
+      "shortest_paths": null,
+      "object_category": "bed"
+    },
+    {
+      "episode_id": "2",
+      "scene_id": "mp3d/mp3d/1LXtFkjw3qL/1LXtFkjw3qL.glb",
+      "scene_dataset_config": "",
+      "additional_obj_config_paths": [],
+      "start_position": [
+        -1.0633374452590942,
+        -2.9155871868133545,
+        11.215474128723145
+      ],
+      "start_rotation": [
+        0.0,
+        0.7604657806786722,
+        0.0,
+        0.6493780073399296
+      ],
+      "info": {
+        "geodesic_distance": 6.36719,
+        "euclidean_distance": 5.84992,
+        "closest_goal_object_id": 417
+      },
+      "goals": [],
+      "start_room": null,
+      "shortest_paths": null,
+      "object_category": "toilet"
+    }
+  ],
+  "category_to_task_category_id": {
+    "chair": 0,
+    "bed": 1,
+    "plant": 2,
+    "toilet": 3,
+    "tv_monitor": 4,
+    "sofa": 5
+  },
+  "category_to_scene_annotation_category_id": {
+    "chair": 0,
+    "bed": 1,
+    "plant": 2,
+    "toilet": 3,
+    "tv_monitor": 4,
+    "sofa": 5
+  }
+}
